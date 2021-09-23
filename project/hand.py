@@ -5,7 +5,7 @@ from color import Color
 def starting_hand(player: Color):
     hand = []
     hand.extend([Piece(PieceType.MAJOR_GENERAL, player)] * 4)
-    hand.extend([Piece(PieceType.LIEUTENANT_GENERAL, player)] * 4)
+    #hand.extend([Piece(PieceType.LIEUTENANT_GENERAL, player)] * 4)
     return hand
     # Piece(PieceType.LIEUTENANT_GENERAL, player), Piece(PieceType.LIEUTENANT_GENERAL, player),
     # Piece(PieceType.LIEUTENANT_GENERAL, player), Piece(PieceType.LIEUTENANT_GENERAL, player),

@@ -1,6 +1,10 @@
+from approvaltests import verify
+
+from board import starting_board, Board
 from color import Color
-from project.hand import Hand, starting_hand
-from project.piece import Piece, PieceType
+from hand import starting_hand
+from move import MoveInfo, Square, move
+from piece import Piece, PieceType, PieceStack
 
 
 def test_board_init():
@@ -8,15 +12,18 @@ def test_board_init():
 
 
 def test_color():
-    print(Color.WHITE)
-    print(Color.WHITE)
-    print(Color.WHITE)
-    print(Color.WHITE)
     assert Color.WHITE == Color.WHITE
 
 
 def test_starting_hand():
-    assert starting_hand(Color.WHITE) == [Piece(PieceType.MAJOR_GENERAL, Color.White),
-                                          Piece(PieceType.MAJOR_GENERAL, Color.White),
-                                          Piece(PieceType.MAJOR_GENERAL, Color.White),
-                                          Piece(PieceType.MAJOR_GENERAL, Color.White)]
+    assert starting_hand(Color.WHITE) == [Piece(PieceType.MAJOR_GENERAL, Color.WHITE),
+                                          Piece(PieceType.MAJOR_GENERAL, Color.WHITE),
+                                          Piece(PieceType.MAJOR_GENERAL, Color.WHITE),
+                                          Piece(PieceType.MAJOR_GENERAL, Color.WHITE)]
+
+def test_move_approvals():
+    board = Board(starting_board())
+    piece_stack = PieceStack([Piece(PieceType.MAJOR_GENERAL, Color.WHITE)])
+    board.content[0][0] = piece_stack
+    move_info = MoveInfo(Square(0,0),Square(0,1))
+    verify(move(board,move_info))

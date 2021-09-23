@@ -25,3 +25,21 @@ class Piece:
     color: Color
 
 
+class PieceStack:
+    def __init__(self,pieces: list[Piece] = []):
+        self.pieces = pieces
+
+    def pop(self) -> Piece:
+        return self.pieces.pop()
+
+    # def __str__(self) -> str:
+    #     name = ""
+    #     for piece in self.pieces:
+    #         name += str(piece.piece_type.value)
+    #     return name
+
+    def __repr__(self) -> str:
+        name = "piece"
+        for piece in self.pieces:
+            name += str(piece.piece_type.value)
+        return name
