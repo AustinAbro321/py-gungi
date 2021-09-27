@@ -1,26 +1,27 @@
 from piece import PieceStack
+from square import Square, A1, B7
 
 
 def starting_board() -> list[list[PieceStack]]:
     return [
-        [PieceStack(),PieceStack(),PieceStack(),PieceStack(),
-        PieceStack(),PieceStack(),PieceStack(),PieceStack(),PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()],
-        [PieceStack(), PieceStack(), PieceStack(), PieceStack(),
-        PieceStack(), PieceStack(), PieceStack(), PieceStack(), PieceStack()]]
+        [PieceStack([]),PieceStack([]),PieceStack([]),PieceStack([]),
+        PieceStack([]),PieceStack([]),PieceStack([]),PieceStack([]),PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])],
+        [PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]),
+        PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([]), PieceStack([])]]
 
 
 class Board:
@@ -31,8 +32,16 @@ class Board:
         name = ""
         for line in self.content:
             name += "["
-            for pieceStack in line:
-                name += pieceStack.__repr__() + ","
+            name += ", ".join([pieceStack.__repr__() for pieceStack in line])
             name += "]"
             name += "\n"
         return name
+
+    def get_piece_at(self, square: Square):
+        row,col = translate_square_to_tuple(square)
+        return self.content[row][col]
+
+def translate_square_to_tuple(square: Square):
+    row = (square // 9)
+    col = (square % 9)
+    return row,col
