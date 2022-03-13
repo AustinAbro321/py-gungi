@@ -1,5 +1,5 @@
-from piece import Piece, PieceType
-from color import Color
+from .piece import Piece, PieceType
+from .color import Color
 
 
 def starting_hand(player: Color):

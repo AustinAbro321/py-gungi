@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from board import Board
-from square import *
+from .board import Board
+from .square import *
 
 
 @dataclass

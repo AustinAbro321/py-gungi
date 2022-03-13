@@ -1,11 +1,11 @@
 from approvaltests import verify
 
-from board import starting_board, Board, translate_square_to_tuple
-from color import Color
-from hand import starting_hand
-from move import MoveInfo, move
-from square import *
-from piece import Piece, PieceType, PieceStack
+from project.square import *
+from project.board import starting_board, Board, translate_square_to_tuple
+from project.color import Color
+from project.hand import starting_hand
+from project.move import MoveInfo, move
+from project.piece import Piece, PieceType, PieceStack
 
 
 def test_board_init():

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum
-from color import Color
-from square import Square
+from .color import Color
+from .square import Square
 
 
 class PieceType(Enum):
@@ -26,11 +26,11 @@ class Piece:
     color: Color
 
 class MajorGeneral:
-    def available_movements(self,place_in_stack: int) -> list[Square]:
+    def available_movements(self,place_in_stack: int) -> 'list[Square]':
         pass
 
 class PieceStack:
-    def __init__(self,pieces: list[Piece] = []):
+    def __init__(self,pieces = []):
         self.pieces = pieces
 
     def pop(self) -> Piece:

@@ -1,8 +1,8 @@
-from piece import PieceStack
-from square import Square, A1, B7
+from .piece import PieceStack
+from .square import Square, A1, B7
 
 
-def starting_board() -> list[list[PieceStack]]:
+def starting_board() -> 'list[list[PieceStack]]':
     return [
         [PieceStack([]),PieceStack([]),PieceStack([]),PieceStack([]),
         PieceStack([]),PieceStack([]),PieceStack([]),PieceStack([]),PieceStack([])],
@@ -25,7 +25,7 @@ def starting_board() -> list[list[PieceStack]]:
 
 
 class Board:
-    def __init__(self, content: list[list[PieceStack]]):
+    def __init__(self, content: 'list[list[PieceStack]]'):
         self.content = content
 
     def __repr__(self):
